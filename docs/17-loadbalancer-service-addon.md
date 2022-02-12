@@ -9,7 +9,7 @@ The commands in this lab will affect the entire cluster and only need to be run 
 ## The LoadBalancer Service Add-on
 Deploy the MetalLB (v0.11.0) add-on:
 ```
-kubectl apply -f https://raw.githubusercontent.com/bennybrit/kubernetes-the-hard-way/master/deployments/metallb-0.11.0.yaml
+kubectl apply -f https://raw.githubusercontent.com/bennybrit/kubernetes-the-hard-way-kvm/main/deployments/metallb-0.11.0.yaml
 ```
 
 > Expected output:
@@ -72,7 +72,7 @@ speaker-tpqmz                 1/1     Running   0          30s     172.19.33.16 
 ## Verification
 Deploy a simple nginx Deployment together with LoadBalancer Service
 ```
-kubectl apply -f https://raw.githubusercontent.com/bennybrit/kubernetes-the-hard-way/master/deployments/metallb-e2e-test.yaml
+kubectl apply -f https://raw.githubusercontent.com/bennybrit/kubernetes-the-hard-way-kvm/main/deployments/metallb-e2e-test.yaml
 ```
 
 > Expected output:
