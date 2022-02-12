@@ -8,7 +8,7 @@ The commands in this lab will affect the entire cluster and only need to be run 
 
 Deploy the CoreDNS (v1.8.7) cluster add-on:
 ```
-kubectl apply -f https://raw.githubusercontent.com/bennybrit/kubernetes-the-hard-way/master/deployments/coredns-1.8.7.yaml
+kubectl apply -f https://raw.githubusercontent.com/bennybrit/kubernetes-the-hard-way-kvm/main/deployments/coredns-1.8.7.yaml
 ```
 
 > Expected output:
