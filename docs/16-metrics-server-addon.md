@@ -9,7 +9,7 @@ The commands in this lab will affect the entire cluster and only need to be run 
 ## The Metrics Server Add-on
 Deploy the Metrics Server (v0.6.1) add-on:
 ```
-kubectl apply -f https://raw.githubusercontent.com/bennybrit/kubernetes-the-hard-way/master/deployments/metrics-server-0.6.1.yaml
+kubectl apply -f https://raw.githubusercontent.com/bennybrit/kubernetes-the-hard-way-kvm/main/deployments/metrics-server-0.6.1.yaml
 ```
 
 > Expected output:
