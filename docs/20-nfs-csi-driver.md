@@ -9,7 +9,7 @@ The commands in this lab will affect the entire cluster and only need to be run 
 ## The NFS CSI Driver
 Deploy NFS CSI Driver (v3.1.0):
 ```
-kubectl apply -f https://raw.githubusercontent.com/bennybrit/kubernetes-the-hard-way/master/deployments/csi-driver-nfs-3.1.0.yaml
+kubectl apply -f https://raw.githubusercontent.com/bennybrit/kubernetes-the-hard-way-kvm/main/deployments/csi-driver-nfs-3.1.0.yaml
 ```
 >Expected output:
 ```
@@ -82,7 +82,7 @@ nfs-csi (default)   nfs.csi.k8s.io   Delete          Immediate           false  
 ## Verification
 Deploy a dynamically provisioned PVC (Persistent Volume Claim) which will be mounted to a Pod running nginx:
 ```
-kubectl apply -f https://raw.githubusercontent.com/bennybrit/kubernetes-the-hard-way/master/deployments/pvc-e2e-test.yaml
+kubectl apply -f https://raw.githubusercontent.com/bennybrit/kubernetes-the-hard-way-kvm/main/deployments/pvc-e2e-test.yaml
 ```
 > Expected output:
 ```
