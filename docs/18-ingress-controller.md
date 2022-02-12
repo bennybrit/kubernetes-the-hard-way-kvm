@@ -51,7 +51,7 @@ ingress-nginx-controller-568764d844-w7kpv   1/1     Running     0          90s
 ## Verification
 The following deployment will deploy nginx webserver Deployment, apache webserver Deployment, ClusterIP Service for each Deployment, and an Ingress resource which will provide access to each webserver by using a unique path (`/nginx` for the nginx webserver and `/apache` for the apache webserver):
 ```
-kubectl apply -f https://raw.githubusercontent.com/bennybrit/kubernetes-the-hard-way/master/deployments/ingress-e2e-test.yaml
+kubectl apply -f https://raw.githubusercontent.com/bennybrit/kubernetes-the-hard-way-kvm/main/deployments/ingress-e2e-test.yaml
 ```
 
 > Expected output:
