@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    k8s-app: metallb-e2e
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      k8s-app: metallb-e2e
+  template:
+    metadata:
+      labels:
+        k8s-app: metallb-e2e
+    spec:
+      containers:
+        - image: nginx
+          name: nginx
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-lb
+  labels:
+    k8s-app: metallb-e2e
+spec:
+  type: LoadBalancer
+  ports:
+    - targetPort: 80
+      port: 80
+  selector:
+    k8s-app: metallb-e2e

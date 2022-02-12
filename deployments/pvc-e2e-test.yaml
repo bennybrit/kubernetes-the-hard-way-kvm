@@ -1,0 +1,30 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nginx-pvc
+  labels:
+    k8s-app: pvc-e2e
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    k8s-app: pvc-e2e
+spec:
+  containers:
+    - image: nginx
+      name: nginx
+      volumeMounts:
+        - mountPath: /var/www
+          name: nginx-pvc
+  volumes:
+    - name: nginx-pvc
+      persistentVolumeClaim:
+        claimName: nginx-pvc

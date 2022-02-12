@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    k8s-app: ingress-e2e
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      k8s-app: ingress-nginx-e2e
+  template:
+    metadata:
+      labels:
+        k8s-app: ingress-nginx-e2e
+    spec:
+      containers:
+        - image: nginx
+          name: nginx
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-clusterip
+  labels:
+    k8s-app: ingress-e2e
+spec:
+  type: ClusterIP
+  ports:
+    - targetPort: 80
+      port: 8080
+  selector:
+    k8s-app: ingress-nginx-e2e
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache
+  labels:
+    k8s-app: ingress-e2e
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      k8s-app: ingress-apache-e2e
+  template:
+    metadata:
+      labels:
+        k8s-app: ingress-apache-e2e
+    spec:
+      containers:
+        - image: httpd
+          name: httpd
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache-clusterip
+  labels:
+    k8s-app: ingress-e2e
+spec:
+  type: ClusterIP
+  ports:
+    - targetPort: 80
+      port: 8080
+  selector:
+    k8s-app: ingress-apache-e2e
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-e2e-test
+  labels:
+    k8s-app: ingress-e2e
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /nginx
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx-clusterip
+                port:
+                  number: 8080
+          - path: /apache
+            pathType: Prefix
+            backend:
+              service:
+                name: apache-clusterip
+                port:
+                  number: 8080
