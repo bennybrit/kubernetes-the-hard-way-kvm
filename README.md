@@ -4,7 +4,7 @@ This tutorial walks you through setting up Kubernetes the hard way on top of KVM
 This tuturial is based on the original "[Kubernetes The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way)" created by Kelsey Hightower which provide the steps for bootstrapping a Kubernetes cluster on top of GCP (Google Cloud Platform).
 
 In this version, I provide the steps for bootstrapping a Kubernetes cluster as an On-Prem solution (on top of a KVM hypervisor), and I also have extended the original tutorial with some additional labs which provide more capabilities to the whole cluster, below is a summary of the changes/additions:
-* The cluster is deployed on top of the KVM hypervisor
+* The cluster is deployed on top of a KVM hypervisor
 * Docker Community Edition (CE) is used as the Container Runtime (Instead of containerd)
 * The Kubernetes worker components are deployed both on the controller and worker nodes
 * Bootstrapping the worker nodes is done using TLS bootstrapping 
