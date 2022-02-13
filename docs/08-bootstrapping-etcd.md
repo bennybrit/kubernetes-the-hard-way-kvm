@@ -95,12 +95,14 @@ EOF
 ## Verification
 List the etcd cluster members:
 ```
-ETCDCTL_API=3
-etcdctl member list \
-        --endpoints=https://127.0.0.1:2379 \
-        --cacert=/etc/etcd/pki/ca.crt \
-        --cert=/etc/etcd/pki/etcd-server.crt \
-        --key=/etc/etcd/pki/etcd-server.key
+{
+  ETCDCTL_API=3
+  etcdctl member list \
+          --endpoints=https://127.0.0.1:2379 \
+          --cacert=/etc/etcd/pki/ca.crt \
+          --cert=/etc/etcd/pki/etcd-server.crt \
+          --key=/etc/etcd/pki/etcd-server.key
+}
 ```
 
 > Expected output:
