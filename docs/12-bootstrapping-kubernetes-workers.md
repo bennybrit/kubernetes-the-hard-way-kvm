@@ -4,7 +4,7 @@ In this lab, we'll bootstrap the Kubernetes worker nodes. The following componen
 
 The worker components will be installed on the controller VMs (`k8s-control-01`, `k8s-control-02`, `k8s-control-03`) and worker VMs (`k8s-worker-01`, `k8s-worker-02`, `k8s-worker-03`), so make sure you run the upcoming steps on each one.
 
-The controller VMs will be used to run management/control Pods, so we'll isolate them by setting the required labels and taints to prevent the scheduler from scheduling normal workload Pods on them.
+The controller VMs will be used to run management/control Pods, so we'll isolate them by setting the required labels and taints to prevent the scheduler from scheduling standard workload Pods on them.
 
 ## Provisioning a Kubernetes Worker Node
 Create the working directories:
@@ -194,11 +194,11 @@ kubectl --kubeconfig admin.kubeconfig certificate approve csr-85lrt csr-h6t7q cs
 ```
 
 ## Control plane nodes isolation
-To prevent the scheduler from scheduling regular workload Pods on the controller nodes, we'll need to add a predefined set of taints and labels to them.
+To prevent the scheduler from scheduling standard workload Pods on the controller nodes, we'll need to add a predefined set of taints and labels to them.
 
 The commands in this section will affect the entire cluster and only need to be run once from one of the controller VMs, so run them only from the `k8s-control-01` controller VM.
 
-Add taint to the controller nodes:
+Add the `node-role.kubernetes.io/master:NoSchedule` taint to the controller nodes:
 ```
 {
   kubectl taint nodes k8s-control-01 node-role.kubernetes.io/master:NoSchedule --kubeconfig admin.kubeconfig
@@ -207,7 +207,7 @@ Add taint to the controller nodes:
 }
 ```
 
-Add labels to the controller nodes:
+Add the `node-role.kubernetes.io/control-plane=` and `node-role.kubernetes.io/master=` labels to the controller nodes:
 ```
 {
   kubectl label nodes k8s-control-01 node-role.kubernetes.io/control-plane= node-role.kubernetes.io/master= --kubeconfig admin.kubeconfig
