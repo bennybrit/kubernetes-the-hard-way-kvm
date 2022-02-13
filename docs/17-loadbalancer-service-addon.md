@@ -100,14 +100,20 @@ pod/nginx-f44697c6c-t7qs8   1/1     Running   0          100s
 
 Try to access the Service from an external server (outside the Kubernetes cluster), for example you can run it on the KVM host (`k8s-kvm-host`):
 ```
-curl 172.19.33.50
+curl --head http://172.19.33.50
 ```
 
 > Expected output:
 ```
-<h1>Welcome to nginx!</h1>
-<p>If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.</p>
+HTTP/1.1 200 OK
+Server: nginx/1.21.6
+Date: Sun, 13 Feb 2022 00:48:33 GMT
+Content-Type: text/html
+Content-Length: 615
+Last-Modified: Tue, 25 Jan 2022 15:03:52 GMT
+Connection: keep-alive
+ETag: "61f01158-267"
+Accept-Ranges: bytes
 ```
 
 Clean-up the reosurces used for the verification:
