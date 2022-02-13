@@ -41,7 +41,10 @@ Download and install [CNI Plugins](https://github.com/containernetworking/plugin
 
 ### Distribute TLS cerficates and configuration files
 ```
-\cp ca.crt /etc/kubernetes/pki/
+{
+  \cp ca.crt /etc/kubernetes/pki/
+  \cp kube-proxy.kubeconfig /var/lib/kube-proxy/kubeconfig
+}
 ```
 
 ### Generate kubelet kubeconfig file
@@ -123,11 +126,6 @@ EOF
 ```
 
 ### Configure the Kubernetes Proxy
-Copy the kube-proxy kubeconfig file:
-```
-\cp kube-proxy.kubeconfig /var/lib/kube-proxy/kubeconfig
-```
-
 Create the `kube-proxy-config.yaml` configuration file:
 ```
 cat <<EOF | sudo tee /var/lib/kube-proxy/kube-proxy-config.yaml
