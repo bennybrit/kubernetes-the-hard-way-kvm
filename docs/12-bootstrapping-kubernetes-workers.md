@@ -54,7 +54,7 @@ LOADBALANCER_IP='172.19.33.10'
 ```
 
 Generate a kubelet kubeconfig file which will be used to bootstrap the kubelet using token:
-> Make sure that the token id matches the token id we've created in [Configuring the Kubernetes Control Plane lab](10-configuring-kubernetes-controllers.md)
+> Make sure that the token id matches the token id we've created in [Configuring the Kubernetes Control Plane](10-configuring-kubernetes-controllers.md) lab
 ```
 {
   kubectl config set-cluster kubernetes \
