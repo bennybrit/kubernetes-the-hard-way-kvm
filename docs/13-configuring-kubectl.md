@@ -52,7 +52,7 @@ Remove all the differnt files by running the follwing on all the cluster nodes (
 ```
 
 ## Verification
-List the nodes in the Kubernetes cluster:
+List the nodes in the Kubernetes cluster (try to run it on each of the controller and worker nodes):
 ```
 kubectl get nodes
 ```
