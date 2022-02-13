@@ -186,7 +186,6 @@ csr-j2f24   2m30s   kubernetes.io/kubelet-serving                 system:node:k8
 csr-k75kz   2m30s   kubernetes.io/kubelet-serving                 system:node:k8s-worker-01    <none>              Pending
 csr-tp45m   2m30s   kubernetes.io/kubelet-serving                 system:node:k8s-worker-02    <none>              Pending
 csr-vh7qj   2m30s   kubernetes.io/kubelet-serving                 system:node:k8s-worker-03    <none>              Pending
-
 ```
 
 Approve all the pending CSRs, for example:
