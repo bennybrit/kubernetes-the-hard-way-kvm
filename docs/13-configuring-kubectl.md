@@ -41,7 +41,7 @@ Generate a kubeconfig file suitable for authenticating as the `admin` user:
 ## Cleanup
 As we proceeded with the different labs, we've generated multiple files (configurations, certificates, keys, etc.) and distributed them to the different nodes, if you have followed the labs, those files should be located under the `~/` directory.
 
-As we already bootstrapped the different controller and worker components, we can clean up those files, as this is also not recommended to keep them there security-wise.
+As we already bootstrapped the different controller and worker components, we can clean up those files, as this is also not recommended to keep them there due to security manners.
 
 Remove all the differnt files by running the follwing on all the cluster nodes (load-balancer, controllers, workers, and KVM host):
 ```
