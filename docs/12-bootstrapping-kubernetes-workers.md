@@ -189,9 +189,9 @@ csr-vh7qj   2m30s   kubernetes.io/kubelet-serving                 system:node:k8
 
 ```
 
-Approve each one of the CSRs, for example:
+Approve all the pending CSRs, for example:
 ```
-kubectl --kubeconfig admin.kubeconfig certificate approve csr-85lrt 
+kubectl --kubeconfig admin.kubeconfig certificate approve csr-85lrt csr-h6t7q csr-j2f24 csr-k75kz csr-tp45m csr-vh7qj
 ```
 
 ## Control plane nodes isolation
