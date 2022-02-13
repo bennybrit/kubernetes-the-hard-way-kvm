@@ -21,31 +21,22 @@ deployment.apps/csi-nfs-controller created
 daemonset.apps/csi-nfs-node created
 ```
 
-List the Controller pods created by the `csi-driver-nfs` deployment:
+List the Pods created by the `csi-driver-nfs` deployment:
 ```
-kubectl get pods -l app=csi-nfs-controller -n kube-system -o wide
-```
-> Expected output:
-```
-NAME                                  READY   STATUS    RESTARTS   AGE     IP             NODE             NOMINATED NODE   READINESS GATES
-csi-nfs-controller-57bd48c448-vsqt8   3/3     Running   0          5m15s   172.19.33.11   k8s-control-01   <none>           <none>
-csi-nfs-controller-57bd48c448-t8vz2   3/3     Running   0          5m15s   172.19.33.12   k8s-control-02   <none>           <none>
-csi-nfs-controller-57bd48c448-8x728   3/3     Running   0          5m15s   172.19.33.13   k8s-control-03   <none>           <none>
-```
-
-List the Node pods created by the `csi-driver-nfs` deployment:
-```
-kubectl get pods -l app=csi-nfs-node -n kube-system -o wide
+kubectl get pods -l 'app in (csi-nfs-controller,csi-nfs-node)' -n kube-system -o wide
 ```
 > Expected output:
 ```
-NAME                 READY   STATUS    RESTARTS   AGE     IP             NODE             NOMINATED NODE   READINESS GATES
-csi-nfs-node-s5dtn   3/3     Running   0          5m15s   172.19.33.11   k8s-control-01   <none>           <none>
-csi-nfs-node-66wpm   3/3     Running   0          5m15s   172.19.33.12   k8s-control-02   <none>           <none>
-csi-nfs-node-wdkw4   3/3     Running   0          5m15s   172.19.33.13   k8s-control-03   <none>           <none>
-csi-nfs-node-tg5qx   3/3     Running   0          5m15s   172.19.33.14   k8s-worker-01    <none>           <none>
-csi-nfs-node-tg4g9   3/3     Running   0          5m15s   172.19.33.15   k8s-worker-02    <none>           <none>
-csi-nfs-node-lvgnj   3/3     Running   0          5m15s   172.19.33.16   k8s-worker-03    <none>           <none>
+NAME                                  READY   STATUS    RESTARTS   AGE   IP             NODE             NOMINATED NODE   READINESS GATES
+csi-nfs-controller-57bd48c448-hgd8j   3/3     Running   0          1h    172.19.33.11   k8s-control-01   <none>           <none>
+csi-nfs-controller-57bd48c448-4t896   3/3     Running   0          1h    172.19.33.12   k8s-control-02   <none>           <none>
+csi-nfs-controller-57bd48c448-vn7lp   3/3     Running   0          1h    172.19.33.13   k8s-control-03   <none>           <none>
+csi-nfs-node-nmdjp                    3/3     Running   0          1h    172.19.33.11   k8s-control-01   <none>           <none>
+csi-nfs-node-84xr4                    3/3     Running   0          1h    172.19.33.12   k8s-control-02   <none>           <none>
+csi-nfs-node-zgdxk                    3/3     Running   0          1h    172.19.33.13   k8s-control-03   <none>           <none>
+csi-nfs-node-vxnlh                    3/3     Running   0          1h    172.19.33.14   k8s-worker-01    <none>           <none>
+csi-nfs-node-nr5x9                    3/3     Running   0          1h    172.19.33.15   k8s-worker-02    <none>           <none>
+csi-nfs-node-mtw9v                    3/3     Running   0          1h    172.19.33.16   k8s-worker-03    <none>           <none>
 ```
 
 Define a new [Storage Class](https://kubernetes.io/docs/concepts/storage/storage-classes/) to support dynamic provisioning:
